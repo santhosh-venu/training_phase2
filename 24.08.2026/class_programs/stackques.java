@@ -246,108 +246,137 @@
 
 
 
-import java.util.*;
-public class Main
-{
-    private static int precedence(char c)
-    {
-        switch(c)
-        {
-            case '+' : case '-': return 1;
-            case '*' : case '/': return 2;
-            case '^' : return 3;
-        }
-        return -1;
+// import java.util.*;
+// public class Main
+// {
+//     private static int precedence(char c)
+//     {
+//         switch(c)
+//         {
+//             case '+' : case '-': return 1;
+//             case '*' : case '/': return 2;
+//             case '^' : return 3;
+//         }
+//         return -1;
         
-    }
-    private static boolean isOpertor(char c)
-    {
-        return c=='+' || c=='-' || c=='*' ||c=='/' || c== '^';
-    }
-    public static String infixToPostfix(String exp)
-    {
-        StringBuilder result = new StringBuilder();
-        Stack<Character> stack = new Stack<>();
-        for(char c:exp.toCharArray()) // A+B*C [A,+,B,*,C]
-        {
-            if(Character.isLetterOrDigit(c))
-            {
-                result.append(c);
-                System.out.println(result);
-            }
-            else if(c == '(')
-            {
-                stack.push(c);
-                System.out.println(result);
+//     }
+//     private static boolean isOpertor(char c)
+//     {
+//         return c=='+' || c=='-' || c=='*' ||c=='/' || c== '^';
+//     }
+//     public static String infixToPostfix(String exp)
+//     {
+//         StringBuilder result = new StringBuilder();
+//         Stack<Character> stack = new Stack<>();
+//         for(char c:exp.toCharArray()) // A+B*C [A,+,B,*,C]
+//         {
+//             if(Character.isLetterOrDigit(c))
+//             {
+//                 result.append(c);
+//                 System.out.println(result);
+//             }
+//             else if(c == '(')
+//             {
+//                 stack.push(c);
+//                 System.out.println(result);
                 
-            }
-            else if(c == ')')
-            {
-                while(!stack.isEmpty() && stack.peek() != '(')
-                {
-                    result.append(stack.pop());
-                }
-                stack.pop();
-                System.out.println("Result : "+result);
-                System.out.println("Stack : "+stack);
-            }
-            else if(isOpertor(c))
-            {
-                while(!stack.isEmpty() && precedence(c) < precedence(stack.peek()))
-                {
-                    result.append(stack.pop());
-                }
-                stack.push(c);
-            }
+//             }
+//             else if(c == ')')
+//             {
+//                 while(!stack.isEmpty() && stack.peek() != '(')
+//                 {
+//                     result.append(stack.pop());
+//                 }
+//                 stack.pop();
+//                 System.out.println("Result : "+result);
+//                 System.out.println("Stack : "+stack);
+//             }
+//             else if(isOpertor(c))
+//             {
+//                 while(!stack.isEmpty() && precedence(c) < precedence(stack.peek()))
+//                 {
+//                     result.append(stack.pop());
+//                 }
+//                 stack.push(c);
+//             }
             
-        }
+//         }
         
-        while (!stack.isEmpty())
-        {
-            result.append(stack.pop());
-        }
-        return result.toString();
-    }
-    public static int evaluvatePostfix(String num)
-    {
-        Stack<Integer> stack =new Stack<>();
-        System.out.println("Post Fix Evaluation");
-         for(char c:num.toCharArray()) 
-        {
-            if(Character.isDigit(c))
-            {
-                stack.push(c-'0');
-            }
-            else{
-                int b = stack.pop();
-                int a = stack.pop();
-                int result = 0;
+//         while (!stack.isEmpty())
+//         {
+//             result.append(stack.pop());
+//         }
+//         return result.toString();
+//     }
+//     public static int evaluvatePostfix(String num)
+//     {
+//         Stack<Integer> stack =new Stack<>();
+//         System.out.println("Post Fix Evaluation");
+//          for(char c:num.toCharArray()) 
+//         {
+//             if(Character.isDigit(c))
+//             {
+//                 stack.push(c-'0');
+//             }
+//             else{
+//                 int b = stack.pop();
+//                 int a = stack.pop();
+//                 int result = 0;
                 
-                switch(c)
-                {
-                    case '+' : result = a+b; break;
-                    case '-' : result = a-b; break;
-                    case '*' : result = a*b; break;
-                    case '/' : result = a/b; break;
-                }
-                stack.push(result);
-            }
+//                 switch(c)
+//                 {
+//                     case '+' : result = a+b; break;
+//                     case '-' : result = a-b; break;
+//                     case '*' : result = a*b; break;
+//                     case '/' : result = a/b; break;
+//                 }
+//                 stack.push(result);
+//             }
             
-        }
-        return stack.pop();
+//         }
+//         return stack.pop();
         
-    }
-	public static void main(String[] args) 
-	{
-	       String exp = "A+B*C";
-	      String str = infixToPostfix(exp);
-	      System.out.println(str);
+//     }
+// 	public static void main(String[] args) 
+// 	{
+// 	       String exp = "A+B*C";
+// 	      String str = infixToPostfix(exp);
+// 	      System.out.println(str);
 	       
-	       String num = "23+5*"; //->(2+3)*5 -> 25
-	      int numStr = evaluvatePostfix(num);
-	      System.out.println("Post Fix Evaluation is : "+ numStr);
+// 	       String num = "23+5*"; //->(2+3)*5 -> 25
+// 	      int numStr = evaluvatePostfix(num);
+// 	      System.out.println("Post Fix Evaluation is : "+ numStr);
 	       
 	        
 	    
-	}
-}
+// 	}
+// }
+
+
+
+
+// import java.util.*;
+
+// public class stackques {
+//     public static void main(String[] args) {
+//         Scanner sc = new Scanner(System.in);
+//         StringBuilder result = new StringBuilder();
+
+//         System.out.println("Enter a sentence:");
+//         String sentence = sc.nextLine();
+
+//         for (String word : sentence.split(" ")) {
+//             Stack<Character> stack = new Stack<>();
+
+//             for (char c : word.toCharArray())
+//                 stack.push(c);
+
+//             while (!stack.isEmpty())
+//                 result.append(stack.pop());
+
+//             result.append(" ");
+//         }
+
+//         System.out.println("Output: " + result);
+//     }
+// }
